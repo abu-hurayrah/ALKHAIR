@@ -2,8 +2,8 @@
 
 # ALKHAIR
 
-<div align="center"><h2><br/><br/>
-A LISP-like language implemented in C<br/>
+<div align="center"><h2><br/>
+A LISP-like language implemented in C<br/><br/>
 </a>Made by Raiyaxi Ziaoi<br/>
 </h2></div>
 <br/>
