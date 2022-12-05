@@ -1,10 +1,8 @@
 (load "../res/prelude.lxr")
 
-(fun {fib n} {
-    select
-        { (== n 0) 0 }
-        { (== n 1) 1 }
-        { otherwise (+ (fib (- n 1)) (fib (- n 2))) }
+(fun {main args} {
+    (print "<3")
+    (main nil)
 })
 
-(fib 1)
+(main nil)

@@ -267,7 +267,10 @@ void lval_print_str(lval* v) {
     char* escaped = malloc(strlen(v->str)+1);
     strcpy(escaped, v->str);
     escaped = mpcf_escape(escaped);
-    printf("\"%s\"", escaped);
+
+    if (strstr(escaped, "\\n")) { escaped[strlen(escaped) - 2] = '\0'; }
+
+    printf("%s", escaped);
     free(escaped);
 }
 
@@ -443,6 +446,15 @@ lval* builtin_op(lenv* e, lval* a, char* op) {
     }
     
     lval_del(a);
+    return x;
+}
+
+lval* builtin_in(lenv* e, lval* a) {
+    lval* x = lval_pop(a, 0);
+
+    char in[2048];
+    fgets(in, 2048, stdin);
+    x->str = in;
     return x;
 }
 
@@ -759,6 +771,7 @@ void lenv_add_builtins(lenv* e) {
     lenv_add_builtin(e, "load",  builtin_load);
     lenv_add_builtin(e, "error", builtin_error);
     lenv_add_builtin(e, "print", builtin_print);
+    lenv_add_builtin(e, "in", builtin_in);
     
     lenv_add_builtin(e, "list", builtin_list);
     lenv_add_builtin(e, "head", builtin_head);
