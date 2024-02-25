@@ -1,7 +1,7 @@
 (load "../res/prelude.lxr")
 
 (fun {main args} {
-    (print "D:D9X")
+    (print "e+D9X")
     (main nil)
 })
 
